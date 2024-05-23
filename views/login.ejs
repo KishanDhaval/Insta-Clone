@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
+
+</head>
+<body>
+    <div class="main bg-zinc-900 overflow-hidden p-3 h-screen w-full">
+        <i class="ri-arrow-left-line text-white text-3xl  inline-block"></i>
+        
+        <div class="container relative h-screen">
+            <div class="top h-1/4 flex justify-center items-center">
+                <!-- <i class="ri-instagram-line text-white text-7xl"></i> -->
+                <img class="h-16" src="/images/instalogo.png" alt="">
+            </div>
+             <form  action="/login" method="post">
+                    <div class="bottom mt-20 text-xl flex flex-col gap-4 w-full items-between">
+                        <input class="px-5 py-3 text-white border outline-none  bg-zinc-900 rounded-2xl" type="text" placeholder="username" name="username">
+                        <input class="px-5 py-3 text-white outline-none bg-zinc-900 border rounded-2xl" type="password" placeholder="password" name="password">
+                        <input class="bg-blue-700 outline-none text-white rounded-3xl w-full px-5 py-3 hover:bg-blue-700 transition duration-300" type="submit" value="Log in">
+                    </div>
+                </form>
+                <a class="text-blue-400 text-xl absolute bottom-20 left-0 w-full flex justify-center border-blue-400 border-2 rounded-3xl px-5 py-3 " href="/">Create new account</a>
+        </div>
+
+    </div>
+</body>
+</html>

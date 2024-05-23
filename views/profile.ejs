@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>feed</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
+</head>
+<body>
+    <main class="bg-zinc-900 min-h-screen min-w-full text-zinc-300 relative px-2">
+        <nav class="text-white flex justify-between items-center text-2xl px-4 py-5">
+           <div class="flex gap-2">
+            <a href="/feed"><i class="ri-arrow-left-line"></i></a>
+            <h4 class=""><%= user.username %></h4>
+           </div>
+            <div class="flex gap-4">
+                <a href=""><i class="ri-threads-fill"></i></a>
+                <a href="/create"> <i class="ri-add-box-line"></i></a>
+                <a href="/logout"><i class="ri-menu-line"></i></a>
+            </div>
+        </nav>
+
+
+        <section class="profile-top">
+            
+            <div class="dp p-2 flex gap-8 font-bold items-center">
+                <div class="profile-img  h-24 w-24 rounded-full overflow-hidden  ">
+                    <img class="object-cover h-full w-full " src="/images/uploads/<%= user.picture %>" alt="">
+                </div>
+                <div class="posts  flex flex-col items-center">
+                    <h2><%= user.posts.length %></h2>
+                    <h4>posts</h4>
+                </div>
+                <a href="/followers/<%= user.username %>">
+                    <div class="followers  flex flex-col items-center">
+                        <h2><%= user.followers.length %></h2>
+                        <h4>followers</h4>
+                    </div>
+                </a>
+                <div class="following  flex flex-col items-center">
+                    <h2><%= user.following.length %></h2>
+                    <h4>following</h4>  
+                </div>
+            </div>
+            <h4 class="px-2"><%= user.name %></h4>
+            <p class="px-2"><%= user.bio %></p>
+            
+            <% if(user.username !== puser.username){ %>
+                <a class="py-1 w-full bg-blue-700 rounded-md flex justify-center text-white text-xl mt-3 " href="/profile/follow/<%= user._id %>">
+                    <% if (puser.following.indexOf(user._id) === -1) { %>
+                        Follow
+                    <% } else { %>
+                        Unfollow
+                    <% } %>
+                </a>
+            <% } else { %>
+                <div class="profile-option mt-4 ">
+                    <a class="bg-zinc-800 px-10 py-2 rounded-md" href="/edit">Edit profile</a>
+                    <a class="bg-zinc-800 px-10 py-2 ml-1 rounded-md" href="">Share profile</a>
+                    <a class="bg-zinc-800 px-3 py-2 ml-1 rounded-md" href=""><i class="ri-user-add-line"></i></a>
+                </div>
+            <% } %>
+            
+        </section>
+
+        <section class="profile-posts flex flex-wrap gap-1 mt-10">
+            <%  user.posts.reverse().forEach(function(post){ %>
+            <div class="post h-32 w-32 bg-blue-700 overflow-hidden">
+                <img class="h-full w-full object-cover" src="/images/uploads/<%= post.picture %>" alt="">
+            </div>
+            <% }) %>
+        </section>
+        <footer id="footer" class="fixed left-0 bg-zinc-900 bottom-0 h-16 w-full text-4xl flex justify-between px-4  items-center">
+            <a href="/feed"><i class="ri-home-5-line "></i></a>
+            <a href="/search"><i class="ri-search-line"></i></a>
+            <a href="/create"><i class="ri-add-box-line"></i></a>
+            <a href="/profile/<%= puser.username %>"><div class="profile-img h-10 w-10 bg-blue-700 rounded-full overflow-hidden" >
+                <img class="w-full h-full object-cover" src="/images/uploads/<%= puser.picture %>" alt="">
+            </div></a>
+        </footer>
+    </main>
+</body>
+</html>
+

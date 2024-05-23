@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>feed</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
+</head>
+<body>
+    <main class="bg-zinc-900 min-h-screen min-w-full text-white relative p-2">
+        <nav class="h-20  flex justify-between items-center">
+            <div class="nav-logo">
+                <img class="h-16 ml-2" src="/images/instaname.png" alt="">
+            </div>
+            <div class="nav-right text-white text-3xl">
+                <i class="ri-heart-line"></i>
+                <i class="ri-messenger-line ml-2 mr-2"></i>
+            </div>
+        </nav>
+
+        <section id="story-section" class="story-section px-3 flex gap-2 border-b py-3" >
+            <div class="story h-24 w-24 rounded-full bg-zinc-700">
+                <img src="" alt="">
+            </div>
+        </section>
+
+        <section id="post-section" class=" post-section text-white  flex flex-col gap-8 mt-4 mb-20 ">
+           <% posts.reverse().forEach(function(post){ %>
+            <div class="post min-h-[50vh] overflow-hidden">
+                <div class="post-img h-[55vh] w-full bg-zinc-700 ">
+                    <a href="/profile/<%= post.user.username %>">
+                        <div class="about-post flex items-center gap-2 p-2 absolute">
+                            <div class="profile-img h-10 w-10 bg-blue-700  rounded-full overflow-hidden" >
+                                <img class="w-full h-full object-cover bg-center bg-no-repeat" src="/images/uploads/<%= post.user.picture %>" alt="profile picture">
+                            </div>
+                             <h4 class="username"><%= post.user.username %></h4>
+                        </div>
+                    </a>
+                    <img class="h-full w-full object-cover" src="/images/uploads/<%= post.picture %>" alt="">
+                </div>
+                <div class="description text-3xl m-1 flex justify-between">
+                    <div class="flex ">
+                        <div class=" flex flex-col">
+                            <a href="/like/<%= post._id %>">
+                                <% if(post.like.indexOf(user._id) === -1){ %>
+                                    <i class="ri-heart-line"></i>
+                               <% }else{ %>
+                                <i class="ri-heart-fill text-red-600"></i>
+                                <% } %>
+                            </a>
+                            <h6 class="text-xl"><%= post.like.length %> Like</h6>
+                        </div>
+                        <i class="ri-chat-1-line mr-6"></i>
+                        <i class="ri-share-forward-line"></i>
+                    </div>
+                <a href="/saved/<%= post._id %>">
+                    <% if(user.saved.indexOf(post.id) === -1){ %>
+                        <i class="ri-bookmark-line"></i>
+                    <% }else{ %>
+                        <i class="ri-bookmark-fill "></i>
+                    <% } %>
+                </a>
+                </div>
+                <div class="caption m-1">
+                    <%= post.caption %>
+                </div>
+            </div>
+           <% }) %>
+        </section>
+
+        <footer id="footer" class="fixed left-0 bg-zinc-900 bottom-0 h-16 w-full text-4xl flex justify-between px-4  items-center">
+            <a href="/feed"><i class="ri-home-5-line "></i></a>
+            <a href="/search"><i class="ri-search-line"></i></a>
+            <a href="/create"><i class="ri-add-box-line"></i></a>
+            <a href="/profile/<%= puser.username %>"><div class="profile-img h-10 w-10 bg-blue-700 rounded-full overflow-hidden" >
+                <img class="w-full h-full object-cover" src="/images/uploads/<%= puser.picture %>" alt="">
+            </div></a>
+        </footer>
+    </main>
+
+    <script src="/javascript/feed.js"></script>
+</body>
+</html>
+

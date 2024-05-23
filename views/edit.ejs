@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>feed</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
+</head>
+<body>
+
+  
+    <main class="bg-zinc-900 min-h-screen min-w-full text-zinc-300 relative px-2">
+        <form class="profile-edit p-4" action="/edit" method="post" enctype="multipart/form-data">
+            <div class="top flex gap-4 items-center">
+                <a href="/profile/<%= user.username %>"><i class="ri-arrow-left-line text-2xl "></i></a>
+                <h1  class="text-2xl">Edit profile</h1>
+            </div>
+            <div class="profile  p-2 flex gap-4 items-center justify-center flex-col">
+                <div class="profile-img mt-10  bg-blue-100 h-24 w-24 rounded-full overflow-hidden  ">
+                    <img class="h-full w-full object-cover" src="/images/uploads/<%= user.picture %>" alt="">
+                </div>
+                <h4 id="editpic" class="text-blue-500">Edit picture</h4>
+            </div>
+            <div class="input">
+                <input class="px-5 py-3 text-white outline-none w-full mt-3 border-b-2 bg-zinc-900 " type="text" value="<%= user.username %>" name="username">
+                <input class="px-5 py-3 text-white outline-none w-full mt-3  border-b-2 bg-zinc-900 " type="text" placeholder="name" value="<%= user.name %>" name="name">
+                <textarea class="px-5 py-3 text-white outline-none w-full mt-3  border-b-2 bg-zinc-900  resize-none" name="bio" id="textarea" placeholder="Bio"><%= user.bio %></textarea>
+                <input id="picInput" type="file" name="picture" class="hidden" value="<%= user.picture %>" >
+                <input class="bg-blue-700 outline-none text-white rounded-3xl w-full px-5 py-3 mt-3 hover:bg-blue-700 transition duration-300" type="submit" value="Updare account">
+            </div>
+    </form>
+
+      
+
+        
+        
+    </main>
+    <script src="/javascript/edit.js"></script>
+</body>
+</html>
+

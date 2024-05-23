@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+</head>
+<body>
+    <main class="bg-zinc-900 min-h-screen min-w-full text-zinc-300 relative ">
+
+        <section class="search-section bg-zinc-900 h-screen w-full px-6 py-6" id="search-section">
+            <i class="ri-search-line absolute top-7 left-9 text-xl text-zinc-400"></i>
+            <input class="input text-white bg-zinc-800 w-full rounded-md px-12 py-2 outline-none" type="text" placeholder="Search">
+            <div class="users h-24"></div>
+        </section>
+
+        <footer id="footer" class="fixed left-0 bg-zinc-900 bottom-0 h-16 w-full text-4xl flex justify-between px-4  items-center">
+            <a href="/feed"><i class="ri-home-5-line "></i></a>
+            <a href="/search"><i class="ri-search-line"></i></a>
+            <a href="/create"><i class="ri-add-box-line"></i></a>
+            <a href="/profile/<%= puser.username %>"><div class="profile-img h-10 w-10 bg-blue-700 rounded-full overflow-hidden" >
+                <img class="w-full h-full object-cover" src="/images/uploads/<%= puser.picture %>" alt="">
+            </div></a>
+        </footer>
+    </main>
+    
+<script src="/javascript/search.js"></script>
+</body>
+</html>

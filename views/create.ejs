@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Post</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
+</head>
+<body >
+    <main class="flex flex-col   min-h-screen bg-black text-white p-4">
+
+   <nav class="flex items-center gap-4 h-16 mb-10">
+    <a href="/profile"><i class="ri-close-line text-4xl"></i></a>
+    <h1 class="text-2xl font-bold">New Post</h1>
+   </nav>
+
+    <form action="/upload" method="post" enctype="multipart/form-data" id="post-form" class="flex flex-col items-center w-full max-w-md mt-20">
+        <!-- Video element to display the camera feed -->
+        <video id="video" class="w-11/12 max-w-md mb-4 border rounded" autoplay></video>
+        <button type="button" id="capture" class="mb-4 px-4 py-2 bg-blue-500 text-white rounded disabled:opacity-50" disabled>Capture Photo</button>
+        <input type="file" id="file-input" name="post-photo" class="mb-4" accept="image/*">
+
+        <!-- Canvas to capture the photo -->
+        <canvas id="canvas" class="hidden"></canvas>
+
+        <!-- Image to display the captured photo or uploaded image -->
+        <img id="photo" class="w-11/12 max-w-md hidden border rounded mb-4" src="" alt="Captured photo">
+
+        <!-- Caption input field -->
+        <input type="text" id="caption" name="caption" placeholder="Enter a caption" class="mb-4 px-4 py-2 border bg-transparent rounded w-11/12 max-w-md">
+
+        <!-- Submit button -->
+        <input  type="submit" class="px-4 py-2 absolute top-6 right-4 text-xl text-blue-500 bg-transparent rounded" value="Next" >
+    </form>
+
+</main>
+   <script src="/javascript/create.js"></script>
+</body>
+</html>
